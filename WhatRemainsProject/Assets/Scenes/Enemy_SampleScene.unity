@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  rotateAngleSpeed: 5
   movePoints:
   - {fileID: 391270441}
   - {fileID: 1040799918}

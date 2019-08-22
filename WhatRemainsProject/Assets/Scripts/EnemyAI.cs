@@ -6,6 +6,8 @@ namespace WhatRemains.Enemy.AI
 	{
 		public float moveSpeed;
 
+		public float rotateAngleSpeed = 5.0f;
+
 		public Transform[] movePoints;
 
 		public float deadzoneDistance = 0.4f;
@@ -53,11 +55,9 @@ namespace WhatRemains.Enemy.AI
 				var movePoint = this.movePoints[_randomMoveSpot];
 				this.transform.position = Vector3.MoveTowards(this.transform.position, movePoint.position, Time.deltaTime * this.moveSpeed);
 				var supposedDir = (movePoint.position - this.transform.position).normalized;
-				// Rotate the forward to the supposed direction
-				this.transform.rotation = Quaternion.LookRotation(supposedDir, Vector3.up);
+				var supposedRot = Quaternion.LookRotation(supposedDir);
+				this.transform.rotation = Quaternion.Slerp(this.transform.rotation, supposedRot, Time.deltaTime * this.rotateAngleSpeed);
 			}
-
-
 		}
 
 		private void RandMoveSpot()
