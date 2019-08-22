@@ -8,6 +8,8 @@ namespace WhatRemains.Enemy.AI
 
 		public float rotateAngleSpeed = 5.0f;
 
+		public Animator animator;
+
 		public Transform[] movePoints;
 
 		public float deadzoneDistance = 0.4f;
@@ -17,6 +19,10 @@ namespace WhatRemains.Enemy.AI
 		private int _randomMoveSpot;
 
 		private float _timer = 0.0f;
+
+		private bool _alreadyMoving = true;
+
+		private bool _alreadyIdled = false;
 
 		private void Awake()
 		{
@@ -31,6 +37,7 @@ namespace WhatRemains.Enemy.AI
 		private void Start()
 		{
 			this.RandMoveSpot();
+			this.StartIdle();
 		}
 
 		// Update is called once per frame
@@ -39,6 +46,8 @@ namespace WhatRemains.Enemy.AI
 			// Move the enemy towards the movepoints 
 			if (Vector3.Distance(this.transform.position, this.movePoints[_randomMoveSpot].position) < this.deadzoneDistance)
 			{
+				this.StopMoving();
+				this.StartIdle();
 				// Wait for the certain seconds
 				if (_timer <= 0)
 				{
@@ -48,10 +57,11 @@ namespace WhatRemains.Enemy.AI
 				{
 					_timer -= Time.deltaTime;
 				}
-
 			}
 			else
 			{
+				this.StopIdle();
+				this.StartMoving();
 				var movePoint = this.movePoints[_randomMoveSpot];
 				this.transform.position = Vector3.MoveTowards(this.transform.position, movePoint.position, Time.deltaTime * this.moveSpeed);
 				var supposedDir = (movePoint.position - this.transform.position).normalized;
@@ -64,6 +74,42 @@ namespace WhatRemains.Enemy.AI
 		{
 			_randomMoveSpot = Random.Range(0, this.movePoints.Length);
 			_timer = this.waitTimeInMovepoint;
+		}
+
+		private void StartMoving()
+		{
+			if (!_alreadyMoving)
+			{
+				_alreadyMoving = true;
+				this.animator.SetBool("Moving", true);
+			}
+		}
+
+		private void StopMoving()
+		{
+			if (_alreadyMoving)
+			{
+				_alreadyMoving = false;
+				this.animator.SetBool("Moving", false);
+			}
+		}
+
+		private void StartIdle()
+		{
+			if (!_alreadyIdled)
+			{
+				_alreadyIdled = true;
+				this.animator.SetBool("Idle", true);
+			}
+		}
+
+		private void StopIdle()
+		{
+			if (_alreadyIdled)
+			{
+				_alreadyIdled = false;
+				this.animator.SetBool("Idle", false);
+			}
 		}
 	}
 

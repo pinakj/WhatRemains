@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rotateAngleSpeed: 5
+  animator: {fileID: 340910295}
   movePoints:
   - {fileID: 391270441}
   - {fileID: 1040799918}
@@ -229,6 +230,12 @@ MonoBehaviour:
   - {fileID: 726870602}
   deadzoneDistance: 0.4
   waitTimeInMovepoint: 1
+--- !u!95 &340910295 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3037431979359817509, guid: 50627f87824398a41b0e22da7d41db37,
+    type: 3}
+  m_PrefabInstance: {fileID: 132741039188195834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &391270441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7007451030672682031, guid: f23a268e148ef894eaff1a99ab34ef9e,
@@ -455,6 +462,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3037431979359817509, guid: 50627f87824398a41b0e22da7d41db37,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d59ab614c70f57e40acdc8e8036c6a1c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
 --- !u!1001 &7007451030524984326
