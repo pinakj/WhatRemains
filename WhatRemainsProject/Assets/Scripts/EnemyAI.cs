@@ -50,7 +50,11 @@ namespace WhatRemains.Enemy.AI
 			}
 			else
 			{
-				this.transform.position = Vector3.MoveTowards(this.transform.position, this.movePoints[_randomMoveSpot].position, Time.deltaTime * this.moveSpeed);
+				var movePoint = this.movePoints[_randomMoveSpot];
+				this.transform.position = Vector3.MoveTowards(this.transform.position, movePoint.position, Time.deltaTime * this.moveSpeed);
+				var supposedDir = (movePoint.position - this.transform.position).normalized;
+				// Rotate the forward to the supposed direction
+				this.transform.rotation = Quaternion.LookRotation(supposedDir, Vector3.up);
 			}
 
 
