@@ -19,8 +19,6 @@ public class CharController : MonoBehaviour
 		forward = Vector3.Normalize(forward);
 		right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
 
-		isVaultable = false;
-
     }
 
     // Update is called once per frame
@@ -29,6 +27,14 @@ public class CharController : MonoBehaviour
 		if (Input.anyKey)
 		{
 			MovePlayer();
+		}
+		if (isVaultable)
+		{
+			Debug.Log("Player can vault!");
+		}
+		else
+		{
+			Debug.Log("Player can't vault!");
 		}
     }
 
