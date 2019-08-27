@@ -43,8 +43,6 @@ namespace WhatRemains.Enemy.AI
         private void Start()
         {
             this.StartPatroling();
-            this.canMoving = true;
-            this.canIdling = true;
         }
 
         public void StartPatroling()
@@ -99,21 +97,19 @@ namespace WhatRemains.Enemy.AI
 
         private void Moving()
         {
-            if (this.canMoving)
+            if (!this.animator.GetBool("Moving"))
             {
-                this.canMoving = false;
-                this.canIdling = true;
-                this.animator.SetTrigger("Moving");
+                this.animator.SetBool("Moving", true);
+                this.animator.SetBool("Idling", false);
             }
         }
 
         private void Idling()
         {
-            if (canIdling)
+            if (!this.animator.GetBool("Idling"))
             {
-                this.canIdling = false;
-                this.canMoving = true;
-                this.animator.SetTrigger("Idling");
+                this.animator.SetBool("Idling", true);
+                this.animator.SetBool("Moving", false);
             }
         }
     }
