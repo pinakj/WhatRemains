@@ -42,15 +42,13 @@ namespace WhatRemains.Enemy.AI
         // Start is called before the first frame update
         private void Start()
         {
-            this.RandMoveSpot();
-            this.canMoving = true;
-            this.canIdling = true;
-            this.canPatrol = true;
+            this.StartPatroling();
         }
 
         public void StartPatroling()
         {
             this.canPatrol = true;
+            this.RandMoveSpot();
         }
 
         public void StopPatroling()
@@ -66,7 +64,8 @@ namespace WhatRemains.Enemy.AI
                 return;
             }
             // Move the enemy towards the movepoints 
-            if (Vector3.Distance(this.transform.position, this.movePoints[_randomMoveSpot].position) < this.deadzoneDistance)
+            var targetPosition = new Vector3(this.movePoints[_randomMoveSpot].position.x, this.transform.position.y, this.movePoints[_randomMoveSpot].position.z);
+            if (Vector3.Distance(this.transform.position, targetPosition) < this.deadzoneDistance)
             {
                 this.Idling();
                 // Wait for the certain seconds
@@ -83,8 +82,8 @@ namespace WhatRemains.Enemy.AI
             {
                 this.Moving();
                 var movePoint = this.movePoints[_randomMoveSpot];
-                this.transform.position = Vector3.MoveTowards(this.transform.position, movePoint.position, Time.deltaTime * this.moveSpeed);
-                var supposedDir = (movePoint.position - this.transform.position).normalized;
+                this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition, Time.deltaTime * this.moveSpeed);
+                var supposedDir = (targetPosition - this.transform.position).normalized;
                 var supposedRot = Quaternion.LookRotation(supposedDir);
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, supposedRot, Time.deltaTime * this.rotateAngleSpeed);
             }
@@ -98,21 +97,19 @@ namespace WhatRemains.Enemy.AI
 
         private void Moving()
         {
-            if (this.canMoving)
+            if (!this.animator.GetBool("Moving"))
             {
-                this.canMoving = false;
-                this.canIdling = true;
-                this.animator.SetTrigger("Moving");
+                this.animator.SetBool("Moving", true);
+                this.animator.SetBool("Idling", false);
             }
         }
 
         private void Idling()
         {
-            if (canIdling)
+            if (!this.animator.GetBool("Idling"))
             {
-                this.canIdling = false;
-                this.canMoving = true;
-                this.animator.SetTrigger("Idling");
+                this.animator.SetBool("Idling", true);
+                this.animator.SetBool("Moving", false);
             }
         }
     }

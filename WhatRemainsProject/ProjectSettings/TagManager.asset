@@ -9,6 +9,7 @@ TagManager:
   - Left
   - Front
   - Back
+  - Sword
   layers:
   - Default
   - TransparentFX
