@@ -42,15 +42,15 @@ namespace WhatRemains.Enemy.AI
         // Start is called before the first frame update
         private void Start()
         {
-            this.RandMoveSpot();
+            this.StartPatroling();
             this.canMoving = true;
             this.canIdling = true;
-            this.canPatrol = true;
         }
 
         public void StartPatroling()
         {
             this.canPatrol = true;
+            this.RandMoveSpot();
         }
 
         public void StopPatroling()
@@ -66,7 +66,8 @@ namespace WhatRemains.Enemy.AI
                 return;
             }
             // Move the enemy towards the movepoints 
-            if (Vector3.Distance(this.transform.position, this.movePoints[_randomMoveSpot].position) < this.deadzoneDistance)
+            var targetPosition = new Vector3(this.movePoints[_randomMoveSpot].position.x, this.transform.position.y, this.movePoints[_randomMoveSpot].position.z);
+            if (Vector3.Distance(this.transform.position, targetPosition) < this.deadzoneDistance)
             {
                 //this.Idling();
                 // Wait for the certain seconds
@@ -83,8 +84,8 @@ namespace WhatRemains.Enemy.AI
             {
                 //this.Moving();
                 var movePoint = this.movePoints[_randomMoveSpot];
-                this.transform.position = Vector3.MoveTowards(this.transform.position, movePoint.position, Time.deltaTime * this.moveSpeed);
-                var supposedDir = (movePoint.position - this.transform.position).normalized;
+                this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition, Time.deltaTime * this.moveSpeed);
+                var supposedDir = (targetPosition - this.transform.position).normalized;
                 var supposedRot = Quaternion.LookRotation(supposedDir);
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, supposedRot, Time.deltaTime * this.rotateAngleSpeed);
             }
