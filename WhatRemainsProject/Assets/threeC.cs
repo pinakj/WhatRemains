@@ -46,49 +46,13 @@ public class threeC : MonoBehaviour
 
         //Rongda
         //Characater Movement.
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if (Input.GetAxis("HorizontalKey") != 0 || Input.GetAxis("VerticalKey") != 0)
         {
             Charanimator.SetBool("isRun", true);
 
         }
-
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            Charanimator.SetBool("isRun", false);
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Charanimator.SetBool("isRun", true);
-
-        }
-
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            Charanimator.SetBool("isRun", false);
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Charanimator.SetBool("isRun", true);
-
-        }
-
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            Charanimator.SetBool("isRun", false);
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Charanimator.SetBool("isRun", true);
-
-        }
-
-        if (Input.GetKeyUp(KeyCode.D))
+        else
         {
             Charanimator.SetBool("isRun", false);
 
@@ -115,6 +79,27 @@ public class threeC : MonoBehaviour
             Charanimator.SetBool("isAttack", false);
 
         }
+
+        //Rongda
+        //Vault
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Charanimator.SetBool("IsJumped", true);
+
+
+        }
+
+        else
+        {
+            Charanimator.SetBool("IsJumped", false);
+
+            Charanimator.SetBool("isIdle", true);
+
+        }
+
+
+
     }
 
 	private void MovePlayer()
