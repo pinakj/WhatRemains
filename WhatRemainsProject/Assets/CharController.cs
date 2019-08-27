@@ -48,5 +48,7 @@ public class CharController : MonoBehaviour
 		transform.forward = heading;
 		transform.position += rMovement;
 		transform.position += fMovement;
+
+
 	}
 }
