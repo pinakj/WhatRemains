@@ -316,6 +316,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7007451030524984326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &794441744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6595749621329397136, guid: 50627f87824398a41b0e22da7d41db37,
+    type: 3}
+  m_PrefabInstance: {fileID: 2929910706684374054}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &794441747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3621771666758071521, guid: 50627f87824398a41b0e22da7d41db37,
+    type: 3}
+  m_PrefabInstance: {fileID: 2929910706684374054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794441744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f778b9b97b3a0419f962e3f608e030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &794441748 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 241388212839504633, guid: 50627f87824398a41b0e22da7d41db37,
+    type: 3}
+  m_PrefabInstance: {fileID: 2929910706684374054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836803912
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621771666758071521, guid: 50627f87824398a41b0e22da7d41db37,
         type: 3}
+      propertyPath: movePoints.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621771666758071521, guid: 50627f87824398a41b0e22da7d41db37,
+        type: 3}
       propertyPath: movePoints.Array.data[0]
       value: 
       objectReference: {fileID: 391270441}
@@ -682,9 +711,43 @@ PrefabInstance:
       propertyPath: movePoints.Array.data[4]
       value: 
       objectReference: {fileID: 726870602}
+    - target: {fileID: 3621771666758071521, guid: 50627f87824398a41b0e22da7d41db37,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 794441748}
+    - target: {fileID: 3621771666758071521, guid: 50627f87824398a41b0e22da7d41db37,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680444209, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
+      propertyPath: patrol
+      value: 
+      objectReference: {fileID: 794441747}
+    - target: {fileID: 1680444209, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 794441748}
+    - target: {fileID: 1680444209, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680444209, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
+      propertyPath: rotateAngleSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 870863862, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
       propertyPath: cooldown_hurt
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 870863862, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 794441744}
+    - target: {fileID: 870863862, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
+      propertyPath: health
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50627f87824398a41b0e22da7d41db37, type: 3}
