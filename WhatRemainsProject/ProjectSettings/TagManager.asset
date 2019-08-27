@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - CanVault
+  - Right
+  - Left
+  - Front
+  - Back
   layers:
   - Default
   - TransparentFX
