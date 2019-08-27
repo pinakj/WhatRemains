@@ -67,7 +67,7 @@ namespace WhatRemains.Enemy.AI
             var targetPosition = new Vector3(this.movePoints[_randomMoveSpot].position.x, this.transform.position.y, this.movePoints[_randomMoveSpot].position.z);
             if (Vector3.Distance(this.transform.position, targetPosition) < this.deadzoneDistance)
             {
-                //this.Idling();
+                this.Idling();
                 // Wait for the certain seconds
                 if (_timer <= 0)
                 {
@@ -80,7 +80,7 @@ namespace WhatRemains.Enemy.AI
             }
             else
             {
-                //this.Moving();
+                this.Moving();
                 var movePoint = this.movePoints[_randomMoveSpot];
                 this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition, Time.deltaTime * this.moveSpeed);
                 var supposedDir = (targetPosition - this.transform.position).normalized;
