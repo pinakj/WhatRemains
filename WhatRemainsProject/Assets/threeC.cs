@@ -97,6 +97,20 @@ public class threeC : MonoBehaviour
             Charanimator.SetBool("isIdle", true);
 
         }
+        //Rongda
+        //Idle Control
+
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetAxis("HorizontalKey") != 0 || Input.GetAxis("VerticalKey") != 0)
+        {
+            Charanimator.SetBool("isIdle", false);
+
+        }
+
+        else
+        {
+            Charanimator.SetBool("isIdle", true);
+
+        }
 
 
 
