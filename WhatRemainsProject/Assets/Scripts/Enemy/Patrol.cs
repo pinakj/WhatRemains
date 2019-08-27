@@ -2,7 +2,7 @@
 
 namespace WhatRemains.Enemy.AI
 {
-    public class EnemyAI : MonoBehaviour
+    public class Patrol : MonoBehaviour
     {
         public float moveSpeed;
 
