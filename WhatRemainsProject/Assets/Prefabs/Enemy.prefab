@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670e0f9772db1804b9494035aa12673f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown_hurt: 1
+  cooldown_hurt: 0.5
   health: 2
   enemy: {fileID: 6595749621329397136}
 --- !u!1 &303115677955679962
