@@ -28,6 +28,8 @@ namespace WhatRemains.Enemy.AI
 
         public bool canIdling { get; private set; }
 
+        public bool canPatrol { get; private set; }
+
         private void Awake()
         {
             if (this.movePoints.Length == 0)
@@ -43,11 +45,26 @@ namespace WhatRemains.Enemy.AI
             this.RandMoveSpot();
             this.canMoving = true;
             this.canIdling = true;
+            this.canPatrol = true;
+        }
+
+        public void StartPatroling()
+        {
+            this.canPatrol = true;
+        }
+
+        public void StopPatroling()
+        {
+            this.canPatrol = false;
         }
 
         // Update is called once per frame
         private void Update()
         {
+            if (!this.canPatrol)
+            {
+                return;
+            }
             // Move the enemy towards the movepoints 
             if (Vector3.Distance(this.transform.position, this.movePoints[_randomMoveSpot].position) < this.deadzoneDistance)
             {
