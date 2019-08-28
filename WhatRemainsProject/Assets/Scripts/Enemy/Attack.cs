@@ -20,7 +20,6 @@ namespace WhatRemains.Enemy.AI
 
         private bool _bFollowing = false;
 
-       
         // Start is called before the first frame update
         private void Awake()
         {
@@ -45,7 +44,8 @@ namespace WhatRemains.Enemy.AI
         {
             if (_bCanFollowing)
             {
-                if (Vector3.Distance(this.transform.position, _tAttackTarget.position) < this.dis_attack)
+                var targetPosition = new Vector3(_tAttackTarget.position.x, this.transform.position.y, _tAttackTarget.position.z);
+                if (Vector3.Distance(this.transform.position, targetPosition) < this.dis_attack)
                 {
                     // Stop moving and start attacking
                     this.Attacking();
@@ -80,21 +80,27 @@ namespace WhatRemains.Enemy.AI
 
         private void Attacking()
         {
-            _bFollowing = false;
-            this.animator.SetTrigger("Attacking");
+            //if (!this.animator.GetBool("Attacking"))
+            //{
+            //    this.animator.SetBool("Attacking", true);
+            //    this.animator.SetBool("Moving", false);
+            //    this.animator.SetBool("Idling", false);
+            //}
         }
 
         private void Following()
         {
-            if (!_bFollowing)
-            {
-                _bFollowing = true;
-                this.animator.SetTrigger("Moving");
-            }
+            //if (!this.animator.GetBool("Moving"))
+            //{
+            //    this.animator.SetBool("Moving", true);
+            //    this.animator.SetBool("Attacking", false);
+            //    this.animator.SetBool("Idling", false);
+            //}
             // Follow the player.
-            this.transform.position = Vector3.MoveTowards(this.transform.position, _tAttackTarget.position, Time.deltaTime * this.moveSpeed);
+            var targetPosition = new Vector3(_tAttackTarget.position.x, this.transform.position.y, _tAttackTarget.position.z);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition, Time.deltaTime * this.moveSpeed);
             // Rotate the enemy to face the player.
-            var supposedDir = (_tAttackTarget.position - this.transform.position).normalized;
+            var supposedDir = (targetPosition - this.transform.position).normalized;
             var supposedRot = Quaternion.LookRotation(supposedDir);
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, supposedRot, Time.deltaTime * this.rotateAngleSpeed);
         }
