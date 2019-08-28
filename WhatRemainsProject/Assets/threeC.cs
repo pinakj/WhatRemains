@@ -97,6 +97,7 @@ public class threeC : MonoBehaviour
             Charanimator.SetBool("isIdle", true);
 
         }
+
         //Rongda
         //Idle Control
 
@@ -116,17 +117,25 @@ public class threeC : MonoBehaviour
 
     }
 
-	private void MovePlayer()
-	{
-		Vector3 dir = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
-		Vector3 rMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
-		Vector3 fMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
+    private void MovePlayer()
+    {
+        Vector3 dir = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
+        Vector3 rMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
+        Vector3 fMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
 
-		Vector3 heading = Vector3.Normalize(rMovement + fMovement);
-		transform.forward = heading;
-		transform.position += rMovement;
-		transform.position += fMovement;
+        Vector3 heading = Vector3.Normalize(rMovement + fMovement);
+        transform.forward = heading;
+        transform.position += rMovement;
+        transform.position += fMovement;
 
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Transform"))
+        {
+            print("Zap!");
+        }
     }
 }

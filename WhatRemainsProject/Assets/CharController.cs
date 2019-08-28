@@ -29,8 +29,11 @@ public class CharController : MonoBehaviour
 	public bool isRight;
 	public bool isLeft;
 
-    // Start is called before the first frame update
-    void Start()
+	private Animator Charanimator;
+
+
+	// Start is called before the first frame update
+	void Start()
     {
 		forward = Camera.main.transform.forward;
 		forward.y = 0;
@@ -49,27 +52,93 @@ public class CharController : MonoBehaviour
 		isLeft = false;
 		isRight = false;
 
+		Charanimator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-		print(isGrounded());
+		//print(isGrounded());
 		if (Input.GetKeyDown(KeyCode.Space) && isVaultable && isGrounded())
 		{
+
 			StartCoroutine(Jump());
 
 		}
 		else
 		{
 			MovePlayer();
+
+
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			Charanimator.SetBool("IsJumped", true);
+
+		}
+		else
+		{
+			Charanimator.SetBool("IsJumped", false);
+			Charanimator.SetBool("isIdle", true);
 		}
 
 		if (isGrounded())
 		{
 			playerRB.useGravity = true;
 		}
-    }
+
+		if (Input.GetAxis("HorizontalKey") != 0 || Input.GetAxis("VerticalKey") != 0)
+		{
+			Charanimator.SetBool("isRun", true);
+
+		}
+		else
+		{
+			Charanimator.SetBool("isRun", false);
+
+		}
+
+		//Rongda
+		//Character Die
+
+		if (Input.GetKeyUp(KeyCode.X))
+		{
+			Charanimator.SetBool("isDied", true);
+		}
+
+		//Rongda
+		//Character Attack
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			Charanimator.SetBool("isAttack", true);
+		}
+
+		else
+		{
+			Charanimator.SetBool("isAttack", false);
+
+		}
+
+
+	
+		//Rongda
+		//Idle Control
+
+		if (Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetAxis("HorizontalKey") != 0 || Input.GetAxis("VerticalKey") != 0)
+		{
+			Charanimator.SetBool("isIdle", false);
+
+		}
+
+		else
+		{
+			Charanimator.SetBool("isIdle", true);
+
+		}
+	}
 
 	public bool isGrounded()
 	{
@@ -102,7 +171,7 @@ public class CharController : MonoBehaviour
 			{
 				transform.position += Vector3.back * Time.deltaTime * jumpSpeed;
 			}
-			transform.position += Vector3.up * Time.deltaTime * jumpSpeed;
+			transform.position += Vector3.up * Time.deltaTime * jumpSpeed * 5;
 
 			yield return null;
 
@@ -112,7 +181,11 @@ public class CharController : MonoBehaviour
 		{
 			if (isFront == true && !isGrounded())
 			{
+				Debug.Log("ehjbfwekjhbf");
+
 				transform.position -= Vector3.left * Time.deltaTime * jumpSpeed;
+
+				StartCoroutine(makeFalse());
 			}
 			else if (isBack == true && !isGrounded())
 			{
@@ -128,28 +201,7 @@ public class CharController : MonoBehaviour
 			}
 			transform.position -= Vector3.up * Time.deltaTime * jumpSpeed;
 
-			if (isGrounded())
-			{
-				if (isFront == true)
-				{
-					isFront = false;
-				}
-
-				else if (isLeft == true)
-				{
-					isLeft = false;
-				}
-
-				else if (isRight == true)
-				{
-					isRight = false;
-				}
-
-				else if (isBack == true)
-				{
-					isBack = false;
-				}
-			}
+			
 			yield return null;
 		}
 
@@ -157,7 +209,17 @@ public class CharController : MonoBehaviour
 		yield return null;
 	}
 
-		
+	IEnumerator makeFalse()
+	{
+		yield return new WaitForSeconds(2.5f);
+		if (isGrounded())
+		{
+			isFront = false;
+			isLeft = false;
+			isRight = false;
+			isBack = false;
+		}
+	}
 
 	private void MovePlayer()
 	{
@@ -165,8 +227,13 @@ public class CharController : MonoBehaviour
 		Vector3 rMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
 		Vector3 fMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
 
+	
 		Vector3 heading = Vector3.Normalize(rMovement + fMovement);
-		transform.forward = heading;
+		if (heading != Vector3.zero)
+		{
+			transform.forward = heading;
+
+		}
 		transform.position += rMovement;
 		transform.position += fMovement;
 
