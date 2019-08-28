@@ -10,16 +10,24 @@ namespace WhatRemains.Enemy.AI
 
         public GameObject enemy;
 
+        public ParticleSystem particleBlood;
+
         private float _timer;
 
-        private bool _bInDamaging;
+        private bool _bTouchedSword;
+
+        private bool _bInCoolDown;
 
         private void Awake()
         {
-            _bInDamaging = false;
+            _bTouchedSword = false;
             if (this.enemy == null)
             {
                 throw new System.NullReferenceException(nameof(this.enemy));
+            }
+            if (this.particleBlood == null)
+            {
+                throw new System.NullReferenceException(nameof(this.particleBlood));
             }
         }
 
@@ -27,8 +35,9 @@ namespace WhatRemains.Enemy.AI
         {
             if (other.gameObject.tag == "Sword")
             {
-                _bInDamaging = true;
+                _bTouchedSword = true;
                 _timer = this.cooldown_hurt;
+                this.particleBlood.Play();
             }
         }
 
@@ -36,30 +45,35 @@ namespace WhatRemains.Enemy.AI
         {
             if (other.gameObject.tag == "Sword")
             {
-                _bInDamaging = false;
+                _bTouchedSword = false;
+                this.particleBlood.Stop();
             }
         }
 
         private void Update()
         {
-            if (_bInDamaging)
+            if (_bInCoolDown)
             {
                 _timer -= Time.deltaTime;
-                if (_timer <= 0.0f)
+                if (_timer <= 0)
                 {
-                    health--;
-                    if (health <= 0)
+                    _bInCoolDown = false;
+                }
+            }
+            else
+            {
+                if (_bTouchedSword)
+                {
+                    this.health--;
+                    if (this.health <= 0)
                     {
                         Debug.Log("The enemy will die.");
                         GameObject.Destroy(this.enemy);
                     }
-                    else
-                    {
-                        _timer = this.cooldown_hurt;
-                    }
+                    _bInCoolDown = true;
+                    _timer = this.cooldown_hurt;
                 }
             }
         }
     }
-
 }

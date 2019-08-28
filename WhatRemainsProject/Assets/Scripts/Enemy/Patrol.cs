@@ -97,20 +97,20 @@ namespace WhatRemains.Enemy.AI
 
         private void Moving()
         {
-            //if (!this.animator.GetBool("Moving"))
-            //{
-            //    this.animator.SetBool("Moving", true);
-            //    this.animator.SetBool("Idling", false);
-            //}
+            if (!this.animator.GetBool("Moving"))
+            {
+                this.animator.SetBool("Moving", true);
+                this.animator.SetBool("Idling", false);
+            }
         }
 
         private void Idling()
         {
-            //if (!this.animator.GetBool("Idling"))
-            //{
-            //    this.animator.SetBool("Idling", true);
-            //    this.animator.SetBool("Moving", false);
-            //}
+            if (!this.animator.GetBool("Idling"))
+            {
+                this.animator.SetBool("Idling", true);
+                this.animator.SetBool("Moving", false);
+            }
         }
     }
 

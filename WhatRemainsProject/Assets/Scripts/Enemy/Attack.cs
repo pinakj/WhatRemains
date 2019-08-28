@@ -80,22 +80,22 @@ namespace WhatRemains.Enemy.AI
 
         private void Attacking()
         {
-            //if (!this.animator.GetBool("Attacking"))
-            //{
-            //    this.animator.SetBool("Attacking", true);
-            //    this.animator.SetBool("Moving", false);
-            //    this.animator.SetBool("Idling", false);
-            //}
+            if (!this.animator.GetBool("Attacking"))
+            {
+                this.animator.SetBool("Attacking", true);
+                this.animator.SetBool("Moving", false);
+                this.animator.SetBool("Idling", false);
+            }
         }
 
         private void Following()
         {
-            //if (!this.animator.GetBool("Moving"))
-            //{
-            //    this.animator.SetBool("Moving", true);
-            //    this.animator.SetBool("Attacking", false);
-            //    this.animator.SetBool("Idling", false);
-            //}
+            if (!this.animator.GetBool("Moving"))
+            {
+                this.animator.SetBool("Moving", true);
+                this.animator.SetBool("Attacking", false);
+                this.animator.SetBool("Idling", false);
+            }
             // Follow the player.
             var targetPosition = new Vector3(_tAttackTarget.position.x, this.transform.position.y, _tAttackTarget.position.z);
             this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition, Time.deltaTime * this.moveSpeed);
