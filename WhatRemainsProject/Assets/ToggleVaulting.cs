@@ -17,6 +17,7 @@ public class ToggleVaulting : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		print("HERE");
 		if (gameObject.tag == "Right")
 		{
 			pController.isRight = true;
