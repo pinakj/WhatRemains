@@ -928,7 +928,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6595749621329397136}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8a02c3b5e396ec24698b3b950c2fe3e3, type: 3}
   m_Controller: {fileID: 9100000, guid: d59ab614c70f57e40acdc8e8036c6a1c, type: 2}
   m_CullingMode: 1
@@ -955,6 +955,7 @@ MonoBehaviour:
   rotateAngleSpeed: 5
   animator: {fileID: 241388212839504633}
   movePoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   deadzoneDistance: 0.4
@@ -1365,11 +1366,6 @@ PrefabInstance:
     - target: {fileID: 6319391453862157338, guid: bc8bfdd08bf3a7b45ad8b36925190ddf,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6319391453862157339, guid: bc8bfdd08bf3a7b45ad8b36925190ddf,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
