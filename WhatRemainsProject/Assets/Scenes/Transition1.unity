@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 1258278244665158732, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1258278244665158732, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
         type: 3}
@@ -331,7 +331,7 @@ Transform:
   - {fileID: 1768544683}
   - {fileID: 864656298}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &376962697
 GameObject:
@@ -411,7 +411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &545369998
 PrefabInstance:
@@ -609,7 +609,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &605442000
 Rigidbody:
@@ -948,7 +948,7 @@ Transform:
   m_LocalScale: {x: 2.0246, y: 2.0246, z: 2.0246}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &926749613
 MonoBehaviour:
@@ -967,6 +967,8 @@ MonoBehaviour:
   Finishpoint: {fileID: 1053721044}
   Repreatable: 0
   speed: 0.8
+  Character: {fileID: 605442000}
+  SwapPoint: {fileID: 2047348221}
 --- !u!111 &926749614
 Animation:
   m_ObjectHideFlags: 0
@@ -1113,7 +1115,7 @@ Transform:
   m_Children:
   - {fileID: 1816828366}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1391328794
 MonoBehaviour:
@@ -1132,6 +1134,8 @@ MonoBehaviour:
   Finishpoint: {fileID: 0}
   Repreatable: 0
   speed: 1
+  Character: {fileID: 0}
+  SwapPoint: {fileID: 0}
 --- !u!1 &1491356806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2337540696090784515, guid: 0fe1576a87653824fb7d7827d7177162,
@@ -1492,7 +1496,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047348217}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1554,7 +1558,7 @@ Transform:
   m_LocalScale: {x: 2.0246, y: 2.0246, z: 2.0246}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2089792892
 GameObject:

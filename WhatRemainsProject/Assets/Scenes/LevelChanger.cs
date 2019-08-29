@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class LevelChanger : MonoBehaviour
 {
+    //for the fadein and fadeout effects//
     public Animator animator;
-    public GameObject Cam;
 
-    public Transform Finishpoint;
+    public GameObject Cam;//for camera movement
+
+    public Transform Finishpoint;//The position that the camera needed to be there.
     private Vector3 Finish;
     private Vector3 StartPoint;
     public bool Repreatable = false;
     public float speed = 1.0f;
-
     float startTime, totalDistance;
-    //Vector3 startCameraPosition;
+
+    //for Creating new Characters
+    public Rigidbody Character;
+    public Transform SwapPoint;
+    private bool haveTrans = false;
+    private Rigidbody clone;
 
     private bool canTrans = false;
     // Start is called before the first frame update
@@ -23,7 +29,12 @@ public class LevelChanger : MonoBehaviour
     {
         Vector3 Finish = Finishpoint.transform.position;
         //startCameraPosition = Cam.transform.position;
+
+        //wait for Character to transform Location//
     }
+
+    //wait for Character to transform Location//
+
 
 
     // Update is called once per frame
@@ -34,8 +45,12 @@ public class LevelChanger : MonoBehaviour
             float currentDuration = (Time.time - startTime);
             float journeyFraction = currentDuration / 1f;
             Cam.transform.position = Vector3.Lerp(StartPoint, Finishpoint.position, journeyFraction);
+
+            
             //print(journeyFraction + "," + Cam.transform.position);
         }
+
+
 
         //canTrans = false;
 
@@ -53,8 +68,17 @@ public class LevelChanger : MonoBehaviour
             StartPoint = Cam.transform.position;
             totalDistance = Vector3.Distance(StartPoint, Finishpoint.position);
             print("yo");
+
+            Destroy(collision.gameObject);
+
+            //transform the character/
+            clone = Instantiate(Character, SwapPoint.position, Quaternion.identity);
+            clone.GetComponent<threeC>().enabled = true;
+
         }
     }
+
+    
 
     
 
