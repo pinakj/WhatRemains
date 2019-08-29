@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dis_attack: 0.1
-  moveSpeed: 10
+  moveSpeed: 2
   patrol: {fileID: 3621771666758071521}
   rotateAngleSpeed: 5
   animator: {fileID: 241388212839504633}
