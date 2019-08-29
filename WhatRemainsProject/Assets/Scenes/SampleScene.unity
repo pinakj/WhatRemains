@@ -2666,10 +2666,15 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.0021975122
       objectReference: {fileID: 0}
+    - target: {fileID: 8882628835627745232, guid: b0c529d174ecb224e8ce05f574e0c745,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8882628835627745235, guid: b0c529d174ecb224e8ce05f574e0c745,
         type: 3}
       propertyPath: jumpHeight
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c529d174ecb224e8ce05f574e0c745, type: 3}

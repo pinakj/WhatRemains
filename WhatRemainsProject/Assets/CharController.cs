@@ -75,13 +75,13 @@ public class CharController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			Charanimator.SetBool("IsJumped", true);
+			//Charanimator.SetBool("IsJumped", true);
 
 		}
 		else
 		{
-			Charanimator.SetBool("IsJumped", false);
-			Charanimator.SetBool("isIdle", true);
+			//Charanimator.SetBool("IsJumped", false);
+			//Charanimator.SetBool("isIdle", true);
 		}
 
 		if (isGrounded())
