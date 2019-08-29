@@ -2495,16 +2495,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1258278244398445169, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258278244398445174, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
-        type: 3}
-      propertyPath: orthographic size
-      value: 35
-      objectReference: {fileID: 0}
     - target: {fileID: 1258278244398445168, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2519,6 +2509,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258278244398445174, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
+        type: 3}
+      propertyPath: orthographic size
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258278244398445169, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd67c7e89bfe05b4cbea57d8fb108adf, type: 3}
@@ -3045,11 +3045,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1258278244398445174, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
-        type: 3}
-      propertyPath: orthographic size
-      value: 35
-      objectReference: {fileID: 0}
     - target: {fileID: 1258278244398445168, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3064,6 +3059,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258278244398445174, guid: bd67c7e89bfe05b4cbea57d8fb108adf,
+        type: 3}
+      propertyPath: orthographic size
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd67c7e89bfe05b4cbea57d8fb108adf, type: 3}
@@ -3254,6 +3254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.0021975122
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882628835627745232, guid: b0c529d174ecb224e8ce05f574e0c745,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8882628835627745235, guid: b0c529d174ecb224e8ce05f574e0c745,
         type: 3}

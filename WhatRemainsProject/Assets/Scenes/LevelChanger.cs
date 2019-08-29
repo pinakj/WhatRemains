@@ -75,7 +75,8 @@ public class LevelChanger : MonoBehaviour
 
             //transform the character/
             clone = Instantiate(Character, SwapPoint.position, Quaternion.identity);
-            clone.GetComponent<threeC>().enabled = true;
+            clone.GetComponent<CharController>().enabled = true;
+            clone.GetComponent<Animator>().enabled = true;
 
         }
     }
