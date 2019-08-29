@@ -97,6 +97,7 @@ namespace WhatRemains.Enemy.AI
 
         private void Moving()
         {
+            Debug.Log("kserjngerkljn");
             if (!this.animator.GetBool("Moving"))
             {
                 this.animator.SetBool("Moving", true);
