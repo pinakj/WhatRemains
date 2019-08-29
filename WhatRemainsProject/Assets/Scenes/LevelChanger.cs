@@ -27,6 +27,7 @@ public class LevelChanger : MonoBehaviour
 
     void Start()
     {
+
         Vector3 Finish = Finishpoint.transform.position;
         //startCameraPosition = Cam.transform.position;
 
@@ -40,6 +41,7 @@ public class LevelChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (canTrans)
         {
             float currentDuration = (Time.time - startTime);
@@ -77,6 +79,8 @@ public class LevelChanger : MonoBehaviour
 
         }
     }
+
+    
 
     
 
