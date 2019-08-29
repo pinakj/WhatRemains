@@ -31,6 +31,10 @@ public class CharController : MonoBehaviour
 
 	private Animator Charanimator;
 
+    public Collider swordCollider;
+    public float attackingTime;
+    private float attackTimer;
+    private bool inAttacking;
 
 	// Start is called before the first frame update
 	void Start()
@@ -54,6 +58,9 @@ public class CharController : MonoBehaviour
 
 		Charanimator = GetComponent<Animator>();
 
+        this.swordCollider.enabled = false;
+        attackTimer = 0.0f;
+        inAttacking = false;
     }
 
     // Update is called once per frame
@@ -114,23 +121,23 @@ public class CharController : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			Charanimator.SetBool("isAttack", true);
+            inAttacking = true;
+            attackTimer = this.attackingTime;
+            this.swordCollider.enabled = true;
 		}
 
 		else
 		{
 			Charanimator.SetBool("isAttack", false);
-
 		}
 
 
-	
 		//Rongda
 		//Idle Control
 
 		if (Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetAxis("HorizontalKey") != 0 || Input.GetAxis("VerticalKey") != 0)
 		{
 			Charanimator.SetBool("isIdle", false);
-
 		}
 
 		else
@@ -138,6 +145,16 @@ public class CharController : MonoBehaviour
 			Charanimator.SetBool("isIdle", true);
 
 		}
+
+        if (this.inAttacking)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0.0f)
+            {
+                this.inAttacking = false;
+                this.swordCollider.enabled = false;
+            }
+        }
 	}
 
 	public bool isGrounded()

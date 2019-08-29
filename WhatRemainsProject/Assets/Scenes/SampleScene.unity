@@ -708,6 +708,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &363078556 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1679429172, guid: b0c529d174ecb224e8ce05f574e0c745,
+    type: 3}
+  m_PrefabInstance: {fileID: 8882628836398376969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &452007634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1044,8 @@ MonoBehaviour:
   isBack: 0
   isRight: 0
   isLeft: 0
+  swordCollider: {fileID: 0}
+  attackingTime: 0
 --- !u!1 &699977002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2683,16 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpHeight
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882628835627745235, guid: b0c529d174ecb224e8ce05f574e0c745,
+        type: 3}
+      propertyPath: swordCollider
+      value: 
+      objectReference: {fileID: 363078556}
+    - target: {fileID: 8882628835627745235, guid: b0c529d174ecb224e8ce05f574e0c745,
+        type: 3}
+      propertyPath: attackingTime
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c529d174ecb224e8ce05f574e0c745, type: 3}
